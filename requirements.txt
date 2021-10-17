@@ -2,3 +2,4 @@ djangorestframework
 markdown
 django-filter
 django-rest-durin
+django-email-verification

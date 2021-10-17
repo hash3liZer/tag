@@ -15,12 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 from authentication.views import *
+from django_email_verification import urls as email_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('email/', include(email_urls)),
 
     # Authentication
-    path('api/v1/organization/signup', OrganizationSignupView)
+    path('api/v1/signup', SignupView.as_view()),
+    path('api/v1/signin/<dom>', SigninView.as_view()),
+    path('api/v1/signout', SignoutView.as_view()),
 ]
